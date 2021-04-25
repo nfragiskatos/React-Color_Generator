@@ -13,6 +13,7 @@ function App () {
     try {
       let colors = new Values(color).all(10);  
       setError(false);
+      setList(colors);
     } catch (error) {
       setError(true);
       console.log(error);
@@ -34,7 +35,9 @@ function App () {
         </form>
       </section>
 			<section className="colors">
-				<h4>list goes heasdfasdfre</h4>
+				{list.map((color, index) => {
+          return <SingleColor key={index} {...color} index={index}/>
+        })}
 			</section>
 		</>
 	);
