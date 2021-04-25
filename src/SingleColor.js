@@ -5,6 +5,17 @@ const SingleColor = ({ rgb, weight, index, hex }) => {
 	const [ alert, setAlert ] = useState(false);
 	const bcg = rgb.join(',');
 	const hexValue = `#${hex}`;
+
+	useEffect(
+		() => {
+			const timeout = setTimeout(() => {
+				setAlert(false);
+			}, 3000);
+			return () => clearTimeout(timeout);
+		},
+		[ alert ]
+	);
+
 	return (
 		<article
 			onClick={() => {
